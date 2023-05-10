@@ -7,11 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerService } from './customer.service';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomerComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,9 +27,16 @@ import {MatDividerModule} from '@angular/material/divider';
     MatButtonModule,
     AppRoutingModule,
     MatDividerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatInputModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+  CustomerService,
+  DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

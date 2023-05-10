@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Customer } from './customer';
+import { CustomerService } from './customer.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'front-app-with-angular-fef';
-}
+  title = "";
+  customer = {} as Customer;
+  customers: Customer[] = [];
+
+  constructor(private customerService: CustomerService) {}
+  
+  saveCar(form: NgForm) {
+
+      this.customerService.createCustomer(this.customer).subscribe(() => {});
+    }
+  }
