@@ -8,11 +8,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { CustomerComponent } from './customer/customer.component';
-import { CustomerService } from './customer.service';
+import { CustomerService } from './service/customer.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 
@@ -30,6 +30,7 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatInputModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule
   ],

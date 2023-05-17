@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Customer } from './customer';
-import { CustomerService } from './customer.service';
+import { Customer } from './model/customer';
+import { CustomerService } from './service/customer.service';
 import { NgForm } from '@angular/forms';
 
 @Component({

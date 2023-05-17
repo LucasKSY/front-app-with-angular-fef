@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../customer.service'; 
-import { Customer } from '../customer';
+import { CustomerService } from '../service/customer.service'; 
+import { Customer } from '../model/customer';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
@@ -11,36 +11,48 @@ import { DatePipe } from '@angular/common';
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent{
 
-  customer: Customer = new Customer();
+success: boolean = false;
+errors!: String[];
+
+  customer: Customer = {
+    idCustomer: '',
+    firstNameCustomer: '',
+    lastNameCustomer: '',
+    birthdateCustomer: '',
+    dateCreatedCustomer: '',
+    monthlyIncomeCustomer: '',
+    cpfCustomer: '',
+    emailCustomer:'',
+    passwordCustomer: '',
+    statusCustomer: true
+  };
   submitted = false;
 
-  constructor(private customerService: CustomerService,
-    private router: Router) { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
   }
 
-  save() {
-    this.customerService
-    .createCustomer(this.customer).subscribe(data => {
-      console.log(data)
-      this.customer = new Customer();
-      this.gotoList();
-    }, 
-    error => console.log(error));
+  saveCustomer() {
+    const datePipe = new DatePipe('en-US');
+    this.customer.birthdateCustomer = datePipe.transform(
+      this.customer.birthdateCustomer, 'dd/MM/yyyy');
+    
+    this.customerService.createCustomer(this.customer).subscribe({next: response => {
+      this.success = true;
+      this.errors = [];    
+    }, error: ex => {
+      if (ex.error.errors) {
+        this.errors = ex.error.errors;
+        this.success = false;
+        ex.error.errors.forEach((element:any) => {         
+        });
+      } else {
+          this.success = false;
+          this.errors = ex.error.errors;        
+      }
+    }})
   }
-
-  onSubmit() {
-    alert(this.customer.firstNameCustomer)
-    this.submitted = true;
-    this.save();   
   }
-
-
-
-  gotoList() {
-    this.router.navigate(['/employees']);
-  }
-}
