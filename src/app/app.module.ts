@@ -13,7 +13,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
 import { DatePipe } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 
 
 @NgModule({
@@ -32,6 +39,11 @@ import { DatePipe } from '@angular/common';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTabsModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
     FormsModule
   ],
   providers: [
